@@ -125,35 +125,7 @@ const Home = () => {
                 >
                   Get Started
                 </a>
-                <a
-                  href="#"
-                  title=""
-                  className="inline-flex items-center mt-6 text-base font-semibold transition-all duration-200 sm:mt-0 hover:opacity-80"
-                >
-                  <svg
-                    className="w-10 h-10 mr-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      fill="#F97316"
-                      stroke="#F97316"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  Watch video
-                </a>
+                
               </div>
             </div>
             <div className="flex justify-center md:justify-end">
@@ -194,7 +166,7 @@ const Home = () => {
                 </div>
       </div>
       <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">Our Services </div>
-      <div className="flex flex-col md:flex-row gap-4 bg-white justify-between px-12 pt-8">
+      <div className="flex flex-col md:flex-row gap-4 bg-white justify-between px-12 pt-8 pb-12">
                 {/* <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
                   <img src="/v1.png" />
                 </div>
@@ -207,17 +179,21 @@ const Home = () => {
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
                   <img src="/v4.png" />
                 </div> */}
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  
+                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s1.jpg' alt='service-1' className='w-56'/>
+                  <p>AI Tutor</p>
                 </div>
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  
+                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s2.jpg' alt='service-1' className='w-56'/>
+                  <p>AI Tutor</p>
                 </div>
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  
+                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s3.jpg' alt='service-1' className='w-56'/>
+                  <p>AI Tutor</p>
                 </div>
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  
+                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s1.jpg' alt='service-1' className='w-56'/>
+                  <p>AI Tutor</p>
                 </div>
           
       </div>
@@ -242,9 +218,9 @@ const Home = () => {
                 <div>
                   <h1 className="font-bold mb-4 text-center">Contact us</h1>
                   <p className="text-center">
-                    +91 9876543210
+                    +91 9999999999
                   </p>
-                  <p className="mt-2 text-center">aiguru@gmail.com</p>
+                  <p className="mt-2 text-center">academia@gmail.com</p>
                 </div>
         </div>
       </div>
