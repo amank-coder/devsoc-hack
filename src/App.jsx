@@ -1,10 +1,19 @@
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Aitutor from './pages/Aitutor';
 
 function App() {
+  
 
   return (
-    <div className="text-5xl text-red-200">
-      Hello
-    </div>
+    <>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/dashboard' element={<Dashboard />} />
+        <Route exact path='/ai-tutor' element={<Aitutor />} />
+      </Routes>
+    </>
   )
 }
 
