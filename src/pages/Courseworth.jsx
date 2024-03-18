@@ -69,7 +69,7 @@ const Courseworth = () => {
         <span className='font-semibold'>Description: </span><span>In this video we will be creeating an end to end LLM Project with vector.Pinecone makes it easy to provide long-term memory for high-performance AI applications. It’s a managed, cloud-native vector database with a simple API and no infrastructure hassles. Pinecone serves fresh, filtered query results with low latency at the scale of billions of vectors. database</span><br />
         <span className='font-semibold'>Tech Stack: </span><br /><span>{res1}</span><br />
         <span className='font-semibold'>Topics Covered: </span><br /><span>{res2}</span><br />
-        <span className='font-semibold'>Is the project discussed? : </span><br /><span>{res3}</span><br />
+        <span className='font-semibold'>Project Included : </span><br /><span>{res3}</span><br />
 
         <div className="px-4 py-3 flex items-center justify-between mt-6 mr-4 -ml-4">
             <input type="text" placeholder="Type your query..." className="flex-1 bg-white rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-blue-300" onChange={(e)=>setQuery(e.target.value)}/>

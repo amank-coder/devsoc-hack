@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {motion} from 'framer-motion'
 import {fadeIn} from '../components/variants'
 import MobileSide from '../components/MobileSide'
@@ -7,18 +7,34 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = JSON.parse(localStorage.getItem('user'))
   console.log(user)
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    setShow(true);
+    const timer = setTimeout(() => {
+        // Remove the loader after 2 seconds
+        setShow(false);
+    }, 3000); // 2000 milliseconds = 2 seconds
+
+    return () => clearTimeout(timer);
+}, []);
+
   
   return (
     <div className="">
+    {/* {show && (<div className="fixed h-screen w-screen load-container z-40 duration-500 ease-in-out">
+      <video autoPlay muted loop className="loader-video">
+            <source src="/video.mp4" type="video/mp4" />
+      </video>
+    </div>)} */}
         <MobileSide isOpen={isOpen}/>
       <div className={`${isOpen ? 'absolute top-4 right-4 text-white z-40':'hidden'}`} onClick={()=>setIsOpen(false)}>X</div>
       <div className='flex flex-col items-center'>
-  <header className="mx-auto bg-white rounded-lg fixed mt-4">
+  <header className="mx-auto bg-white rounded-lg fixed mt-4 shadow-md hidden md:block">
     <div className="px-4 mx-auto sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-16 lg:h-20">
         <div className="flex-shrink-0 mr-72 px-4">
           <a href="#" title="" className="flex">
-            <h2 className="text-3xl font-extrabold tracking-widest font-sans-serif ">
+            <h2 className="text-3xl font-extrabold ">
               Academia
             </h2>
           </a>
@@ -176,34 +192,45 @@ const Home = () => {
                   <img src="/cp.png" alt="" className="hover:scale-105 cursor-pointer"/>
                   </div>
                 </div>
+                
       </div>
       <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">Our Services </div>
-      <div className="flex flex-col md:flex-row gap-4 bg-white justify-between px-12 pt-8 pb-12">
+      <div className="flex flex-col md:flex-row gap-2 bg-white justify-between md:px-24 pt-8 pb-12">
 
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s1.jpg' alt='service-1' className='w-56 mx-auto'/>
-                  <p className='text-center font-semibold'>AI Tutor</p>
-                  <p className='text-center w-56 text-sm'>AI-assissted smart doubt resolution</p>
-                </div>
-                {/* <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s2.jpg' alt='service-1' className='w-56 mx-auto'/>
-                  <p className='text-center font-semibold'>Price validation</p>
-                  <p className='w-56 text-center text-sm'>Validate Course prices according to worthiness of course</p>
-                </div> */}
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s3.jpg' alt='service-1' className='w-56 mx-auto'/>
-                  <p className='text-center font-semibold'>Course generator</p>
+      <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/planned.jpg' alt='service-1' className='w-72 mx-auto'/>
+                  <p className='text-center font-semibold'>Planned Learning Path</p>
                   <p className='w-56 text-center text-sm'>AI curated personalized course</p>
                 </div>
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s1.jpg' alt='service-1' className='w-56 mx-auto'/>
-                  <p className='text-center font-semibold'>Multi-lingual</p>
-                  <p className='w-56 text-center text-sm'>Supports course content in regional language</p>
+                  <img src='/worth.jpg' alt='service-1' className='w-72 mx-auto'/>
+                  <p className='text-center font-semibold'>Course Worthiness</p>
+                  <p className='w-56 text-center text-sm'>Know the worth of the course</p>
                 </div>
+                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s3.jpg' alt='service-1' className='w-72 mx-auto'/>
+                  <p className='text-center font-semibold'>Course Navigation</p>
+                  <p className='w-56 text-center text-sm'>AI curated personalized course</p>
+                </div>
+
           
       </div>
+      <div className="flex flex-col md:flex-row justify-center gap-16">
+  <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+    <img src='/s1.jpg' alt='service-1' className='w-72 mx-auto'/>
+    <p className='text-center font-semibold'>AI Tutor</p>
+    <p className='text-center w-56 text-sm'>AI-assisted smart doubt resolution</p>
+  </div>
+  
+  <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+    <img src='/s1.jpg' alt='service-1' className='w-72 mx-auto'/>
+    <p className='text-center font-semibold'>Multi-lingual</p>
+    <p className='w-56 text-center text-sm'>Supports course content in regional language</p>
+  </div>
+</div>
 
-      <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">How it works ? </div>
+
+      {/* <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">How it works ? </div> */}
       <div className="flex flex-col md:flex-row gap-4 bg-white justify-between px-12 pt-8 pb-12">
 
                 {/* <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
@@ -240,10 +267,12 @@ const Home = () => {
                     <p className="font-bold text-2xl mb-4 mx-auto text-center">Academia</p>
                     <p className="text-left">Your Gateway to Knowledge and Growth. Discover a world of comprehensive learning resources, expert guidance, and innovative tools designed to empower students and professionals alike on their educational journey.</p>
                   </div> */}
+                    <h2 className="font-bold text-center text-4xl flex items-center justify-between ml-6 mt-8">Academia</h2>
                 </div>
                 <div className="md:pl-8">
                   {/* <h1 className="font-bold text-center">Quick Links</h1> */}
                   <div className="grid grid-cols-3 mt-4 gap-4 text-left">
+           
                     {/* <div>Home</div>
                     <div>About us</div>
                     <div className="mt-4">Recommender</div>
@@ -263,7 +292,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div>
-                  <h1 className="font-bold mb-4 text-center">Contact us</h1>
+                  <h1 className="font-bold mb-4 text-center mt-6">Contact us</h1>
                   <p className="text-center">
                     +91 7667320067
                   </p>
