@@ -109,8 +109,8 @@ const Home = () => {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
             <div>
-              <motion.h1 variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false, amount:0.7}} className="text-4xl font-semibold text-white sm:text-6xl lg:text-5xl">
-              Empowering Education, Anywhere, Anytime
+              <motion.h1 variants={fadeIn('up', 0.25)} initial="hidden" whileInView={'show'} viewport={{once:false, amount:0.7}} className="text-4xl font-semibold text-white sm:text-6xl lg:text-5xl">
+              Empowering Education, Anytime, Anywhere
                 <div className="relative inline-flex">
                   <span className="absolute inset-x-0 bottom-0"></span>
                   <h1 className="relative text-4xl font-semibold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 sm:text-6xl lg:text-5xl px-2 mt-2">
@@ -181,6 +181,32 @@ const Home = () => {
                   <p className='text-center font-semibold'>AI Tutor</p>
                   <p className='text-center w-56 text-sm'>AI-assissted smart doubt resolution</p>
                 </div>
+                {/* <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s2.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>Price validation</p>
+                  <p className='w-56 text-center text-sm'>Validate Course prices according to worthiness of course</p>
+                </div> */}
+                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s3.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>Course generator</p>
+                  <p className='w-56 text-center text-sm'>AI curated personalized course</p>
+                </div>
+                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s1.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>Multi-lingual</p>
+                  <p className='w-56 text-center text-sm'>Supports course content in regional language</p>
+                </div>
+          
+      </div>
+
+      <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">How it works ? </div>
+      <div className="flex flex-col md:flex-row gap-4 bg-white justify-between px-12 pt-8 pb-12">
+
+                {/* <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+                  <img src='/s1.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>AI Tutor</p>
+                  <p className='text-center w-56 text-sm'>AI-assissted smart doubt resolution</p>
+                </div>
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
                   <img src='/s2.jpg' alt='service-1' className='w-56 mx-auto'/>
                   <p className='text-center font-semibold'>Price validation</p>
@@ -195,7 +221,7 @@ const Home = () => {
                   <img src='/s1.jpg' alt='service-1' className='w-56 mx-auto'/>
                   <p className='text-center font-semibold'>Multi-lingual</p>
                   <p className='w-56 text-center text-sm'>Supports course content in regional language</p>
-                </div>
+                </div> */}
           
       </div>
       
@@ -206,24 +232,36 @@ const Home = () => {
     </svg>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-white pl-16 pb-8">
                 <div>
-                  <div>
+                  {/* <div>
                     <p className="font-bold text-2xl mb-4 mx-auto text-center">Academia</p>
-                    <p className="text-center">Your Gateway to Knowledge and Growth. Discover a world of comprehensive learning resources, expert guidance, and innovative tools designed to empower students and professionals alike on their educational journey.</p>
-                  </div>
+                    <p className="text-left">Your Gateway to Knowledge and Growth. Discover a world of comprehensive learning resources, expert guidance, and innovative tools designed to empower students and professionals alike on their educational journey.</p>
+                  </div> */}
                 </div>
                 <div className="md:pl-8">
-                  <h1 className="font-bold text-center">Quick Links</h1>
-                  <div className="grid grid-cols-2 mt-4 text-center">
-                    <div>Home</div>
+                  {/* <h1 className="font-bold text-center">Quick Links</h1> */}
+                  <div className="grid grid-cols-3 mt-4 gap-4 text-left">
+                    {/* <div>Home</div>
                     <div>About us</div>
                     <div className="mt-4">Recommender</div>
-                    <div className="mt-4">Courses</div>
+                    <div className="mt-4">Courses</div> */}
+                    <div className='-ml-16'>
+                      <h2 className='font-bold'>Services</h2>
+                      <div className='mt-4'>AI Tutor</div>
+                      <div className='py-2'>Learning path generator</div>
+                      <div className='py-2'>Multi-lingual Support</div>
+                    </div>
+                    <div>
+                      <h2 className='font-bold'>Company</h2>
+                      <div className='mt-4'>About us</div>
+                      <div className='py-2'>Policy</div>
+                    </div>
+                    
                   </div>
                 </div>
                 <div>
                   <h1 className="font-bold mb-4 text-center">Contact us</h1>
                   <p className="text-center">
-                    +91 9999999999
+                    +91 7667320067
                   </p>
                   <p className="mt-2 text-center">academia@gmail.com</p>
                 </div>

@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 const Aitutor = () => {
   
   const navigate = useNavigate();
@@ -13,6 +14,9 @@ const Aitutor = () => {
   const [doubt, setDoubt] = useState('');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
+
+
+
 
   const handleSeekChange = (e) => {
     setSeekToTime(parseFloat(e.target.value));
@@ -75,12 +79,13 @@ const Aitutor = () => {
           <h2 className='text-2xl mb-2'>Any Doubts?</h2>
           <div className='mb-4'>
           <input
-  type="text"
-  placeholder="Ask your doubt ..."
-  className="w-full px-3 py-2 border rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
-  value={doubt}  // Add this line to set the value of the input field
-  onChange={(e) => setDoubt(e.target.value)}
-/>
+            type="text"
+            placeholder="Ask your doubt ..."
+            className="w-full px-3 py-2 border rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
+            value={doubt}  // Add this line to set the value of the input field
+            onChange={(e) => setDoubt(e.target.value)}
+          />
+
             <button className='p-2 bg-blue-400 px-4 mt-2 text-white' onClick={handleSubmit}>Submit</button>
             {loading && <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><circle cx="18" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".67" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="12" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".33" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="6" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin="0" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle></svg>}
             <p className="font-bold mt-4">Answer</p>

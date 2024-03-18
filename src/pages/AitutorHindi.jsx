@@ -30,7 +30,8 @@ const AitutorHindi = () => {
   };
 
   const handleClick = ()=>{
-    const text = "Namaste kaise ho?";
+    const text = "koi bhi data science pariyojna data sangrah prakriya se shuru hoti hai। jhil krishi mein data ektra karne ke teen vikalp hain। sabse pahle, ham taiyar data ka upyog kar sakte hain। ham ise ya to kisi teesre paksh ke vikreta se kharid sakte hain ya kaggle aadi se prapt kar sakte hain। dusra vikalp yah hai ki hamare pass data enoteters ki ek team ho jo kisaanon se ine chhaviyon ko ektra karne aur un chhaviyon ko swasth ya der se jhulas ke roop mein enotet karne ka kam kare। enoteters ki yah team kisaanon ke sath kam kar sakti hai। ve shayad kheton mein jaakar kisaanon se poochh sakte hain";
+    
     const value = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(value);
   }
