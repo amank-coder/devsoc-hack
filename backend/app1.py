@@ -8,6 +8,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from typing_extensions import Concatenate
 from langchain.chains.question_answering import load_qa_chain
 from flask import Flask
+from flask import request
 
 from langchain_openai import OpenAI
 
@@ -23,25 +24,6 @@ def transcribe_youtube(video_url, model="base"):
 
 
 
-text_splitter=CharacterTextSplitter(
-    separator="\n",
-    chunk_size = 100,
-    chunk_overlap = 20,
-)
-texts=text_splitter.split_text(summary)
-
-embeddings= HuggingFaceEmbeddings()
-
-document_search=FAISS.from_texts(texts,embeddings)
-document_search
-
-os.environ["OPENAI_API_KEY"] = "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"
-llm = OpenAI()
-chain=load_qa_chain(OpenAI(),chain_type="stuff")
-question = "how is data augmentation done here?"
-texts=document_search.similarity_search(question)
-answer = chain.run(question=question, input_documents=texts)
-print(answer)
 
 app = Flask(__name__)
 

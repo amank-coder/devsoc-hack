@@ -16,8 +16,9 @@ const Layout = ({children}) => {
           <Sidebar>
               <SidebarItem text="Dashboard"  icon={<LayoutDashboard />} active={path=='/dashboard'} link='/dashboard'/>
               <SidebarItem text="Price Estimator"  icon={<DollarSignIcon />} active={path=='/price-estimator'} link='/price-estimator' />
-              <SidebarItem text="Pathway"  icon={<Sparkles />} active={path=='/pathway'} link='/pathway' />
+              {/* <SidebarItem text="Pathway"  icon={<Sparkles />} active={path=='/pathway'} link='/pathway' /> */}
               <SidebarItem text="AI Tutor"  icon={<Brain />} active={path=='/ai-tutor'} link='/ai-tutor' />
+              <SidebarItem text="Course Worth"  icon={<Brain />} active={path=='/course-worth'} link='/course-worth' />
           </Sidebar>
           <div className='w-full ml-20 md:ml-[20rem] overflow-x-auto'>{children}</div>
           </div>

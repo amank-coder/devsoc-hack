@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Layout from '../components/layout/Layout';
 import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Aitutor = () => {
   
@@ -9,7 +10,9 @@ const Aitutor = () => {
   const playerRef = useRef(null);
   const [seekToTime, setSeekToTime] = useState(0);
   const [selectedLanguage, setSelectedLanguage] = useState('English');
-
+  const [doubt, setDoubt] = useState('');
+  const [answer, setAnswer] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSeekChange = (e) => {
     setSeekToTime(parseFloat(e.target.value));
@@ -30,6 +33,27 @@ const Aitutor = () => {
     }
   };
 
+  const handleSubmit = async () => {
+    try {
+      // Make a POST request to the Flask API
+      console.log(doubt)
+      setLoading(true)
+      const response = await axios.post('http://127.0.0.1:5000/answer_doubt', {doubt});
+  
+      // Parse the response
+      const data = response.data;
+      console.log(response)
+      setLoading(false)
+  
+      // Update the state with the answer
+      setAnswer(data.answer);
+    } catch (error) {
+      console.error("Error occurred while submitting doubt:", error);
+      // Handle the error, such as displaying an error message to the user
+    }
+  };
+  
+
   return (
     <Layout>
       <div className='mt-8 flex flex-col'>
@@ -41,17 +65,28 @@ const Aitutor = () => {
       </div>
       
         <div className='mx-auto hidden md:block'>
-          <ReactPlayer ref={playerRef} url='https://youtu.be/MoqgmWV1fm8?si=_IfsW2G-oSExXBSB' controls />
+          <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls />
         </div>
         <div className='mx-auto md:hidden'>
-          <ReactPlayer ref={playerRef} url='https://youtu.be/MoqgmWV1fm8?si=_IfsW2G-oSExXBSB' controls width="300px" height="200px"/>
+          <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls width="300px" height="200px"/>
         </div>
         
         <div className='md:mx-24 mt-8'>
           <h2 className='text-2xl mb-2'>Any Doubts?</h2>
           <div className='mb-4'>
-            <input type="text" placeholder='Ask your doubt ...' className='w-full px-3 py-2 border rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none' />
-            <button className='p-2 bg-blue-400 px-4 mt-2 text-white'>Submit</button>
+          <input
+  type="text"
+  placeholder="Ask your doubt ..."
+  className="w-full px-3 py-2 border rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
+  value={doubt}  // Add this line to set the value of the input field
+  onChange={(e) => setDoubt(e.target.value)}
+/>
+            <button className='p-2 bg-blue-400 px-4 mt-2 text-white' onClick={handleSubmit}>Submit</button>
+            {loading && <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><circle cx="18" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".67" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="12" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".33" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="6" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin="0" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle></svg>}
+            <p className="font-bold mt-4">Answer</p>
+            {answer && 
+            <p>{answer}</p>
+            }
           </div>
         </div>
       </div>

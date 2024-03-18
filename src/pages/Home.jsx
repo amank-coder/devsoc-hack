@@ -5,6 +5,8 @@ import MobileSide from '../components/MobileSide'
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = JSON.parse(localStorage.getItem('user'))
+  console.log(user)
   
   return (
     <div className="bg-gradient-to-b from-[#04016C] to-blue-[#4A16BD]">
@@ -83,18 +85,18 @@ const Home = () => {
               >
                 Team
               </a>
-              <div className="w-px h-5 bg-black/20"></div>
+              <div className={`${user ? 'hidden' : 'w-px h-5 bg-black/20'}`}></div>
               <a
                 href="/login"
                 title=""
-                className="text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80"
+                className={`${user ? 'hidden' : 'text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80'}`}
               >
                 Login
               </a>
               <a
                 href="#"
                 title=""
-                className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-white border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white"
+                className={`${ user ? 'hidden' : 'inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-white border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white'}`}
                 role="button"
               >
                 Register
