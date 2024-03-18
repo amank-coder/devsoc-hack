@@ -1,11 +1,10 @@
+import Layout from '../components/layout/Layout'
 import React, { useState, useRef } from 'react';
-import Layout from '../components/layout/Layout';
 import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
 
-const Aitutor = () => {
-  
-  const navigate = useNavigate();
+const AitutorHindi = () => {
+    const navigate = useNavigate();
   const playerRef = useRef(null);
   const [seekToTime, setSeekToTime] = useState(0);
   const [selectedLanguage, setSelectedLanguage] = useState('English');
@@ -25,16 +24,22 @@ const Aitutor = () => {
   const handleChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedLanguage(selectedValue);
-    if (selectedValue === 'Hindi') {
-      navigate('/ai-tutor/hindi'); // Assuming you have navigate function available
+    if (selectedValue === 'English') {
+      navigate('/ai-tutor'); // Assuming you have navigate function available
     }
   };
 
-  return (
+  const handleClick = ()=>{
+    const text = "Namaste kaise ho?";
+    const value = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(value);
+  }
+  
+    return (
     <Layout>
       <div className='mt-8 flex flex-col'>
       <div className='text-end mr-16 mb-8'>
-      <select className='w-32 px-3 py-2 border rounded-lg bg-gray-100 focus:border-blue-500 focus:outline-none' onChange={handleChange}>
+      <select className='w-32 px-3 py-2 border rounded-lg bg-gray-100 focus:border-blue-500 focus:outline-none' onChange={handleChange} value={'Hindi'}>
         <option>English</option>
         <option >Hindi</option>
       </select>
@@ -48,6 +53,7 @@ const Aitutor = () => {
         </div>
         
         <div className='md:mx-24 mt-8'>
+        <button onClick={handleClick}>Translate audio</button>
           <h2 className='text-2xl mb-2'>Any Doubts?</h2>
           <div className='mb-4'>
             <input type="text" placeholder='Ask your doubt ...' className='w-full px-3 py-2 border rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none' />
@@ -61,7 +67,7 @@ const Aitutor = () => {
           <button onClick={handleSeek}>Seek</button>
         </div> */}
     </Layout>
-  );
+  )
 }
 
-export default Aitutor;
+export default AitutorHindi

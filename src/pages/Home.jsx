@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {motion} from 'framer-motion'
 import {fadeIn} from '../components/variants'
+import MobileSide from '../components/MobileSide'
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <div className="bg-gradient-to-b from-[#04016C] to-blue-[#4A16BD]">
+        <MobileSide isOpen={isOpen}/>
+        <div className={`${isOpen ? 'absolute top-4 right-4 text-white z-40':'hidden'}`} onClick={()=>setIsOpen(false)}>X</div>
       <header className="">
         <div className="px-4 mx-auto sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -17,7 +22,8 @@ const Home = () => {
             </div>
             <button
               type="button"
-              className="inline-flex p-1 text-black transition-all duration-200 border border-black lg:hidden focus:bg-gray-100 hover:bg-gray-100"
+              className="inline-flex p-1 text-white transition-all duration-200 border border-white lg:hidden focus:bg-gray-100 hover:bg-gray-100"
+              onClick={()=>setIsOpen(!isOpen)}
             >
               <svg
                 className="block w-6 h-6"
@@ -79,7 +85,7 @@ const Home = () => {
               </a>
               <div className="w-px h-5 bg-black/20"></div>
               <a
-                href="/sign-in"
+                href="/login"
                 title=""
                 className="text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80"
               >
@@ -101,11 +107,11 @@ const Home = () => {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
             <div>
-              <motion.h1 variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false, amount:0.7}} className="text-4xl font-bold text-white sm:text-6xl lg:text-5xl">
+              <motion.h1 variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false, amount:0.7}} className="text-4xl font-semibold text-white sm:text-6xl lg:text-5xl">
               Empowering Education, Anywhere, Anytime
                 <div className="relative inline-flex">
                   <span className="absolute inset-x-0 bottom-0"></span>
-                  <h1 className="relative text-4xl font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 sm:text-6xl lg:text-5xl px-2 mt-2">
+                  <h1 className="relative text-4xl font-semibold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 sm:text-6xl lg:text-5xl px-2 mt-2">
                   Learn with AI
                   </h1>
                 </div>
@@ -151,7 +157,7 @@ const Home = () => {
                 </div>
                 <div className="bg-orange-100 h-36 w-36 rounded-md p-6 mx-0">
                   <div className="rounded-full bg-white shadow-lg">
-                  <img src="/react.png" alt="" className="hover:scale-105 cursor-pointer"/>
+                  <img src="/java.png" alt="" className="hover:scale-105 cursor-pointer"/>
                   </div>
                 </div>
                 <div className="bg-red-100 h-36 w-36 rounded-md p-6">
@@ -161,45 +167,42 @@ const Home = () => {
                 </div>
                 <div className="bg-orange-100 h-36 w-36 rounded-md p-6 mx-0">
                   <div className="rounded-full bg-white shadow-lg">
-                  <img src="/react.png" alt="" className="hover:scale-105 cursor-pointer"/>
+                  <img src="/cp.png" alt="" className="hover:scale-105 cursor-pointer"/>
                   </div>
                 </div>
       </div>
       <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">Our Services </div>
       <div className="flex flex-col md:flex-row gap-4 bg-white justify-between px-12 pt-8 pb-12">
-                {/* <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  <img src="/v1.png" />
-                </div>
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  <img src="/v2.png" />
-                </div>
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  <a href="/browse/clsw3xffg04ku07obojcgyagu/Gravitation"><img src="/v7.png" /></a>
-                </div>
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer">
-                  <img src="/v4.png" />
-                </div> */}
+
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s1.jpg' alt='service-1' className='w-56'/>
-                  <p>AI Tutor</p>
+                  <img src='/s1.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>AI Tutor</p>
+                  <p className='text-center w-56 text-sm'>AI-assissted smart doubt resolution</p>
                 </div>
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s2.jpg' alt='service-1' className='w-56'/>
-                  <p>AI Tutor</p>
+                  <img src='/s2.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>Price validation</p>
+                  <p className='w-56 text-center text-sm'>Validate Course prices according to worthiness of course</p>
                 </div>
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s3.jpg' alt='service-1' className='w-56'/>
-                  <p>AI Tutor</p>
+                  <img src='/s3.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>Course generator</p>
+                  <p className='w-56 text-center text-sm'>AI curated personalized course</p>
                 </div>
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s1.jpg' alt='service-1' className='w-56'/>
-                  <p>AI Tutor</p>
+                  <img src='/s1.jpg' alt='service-1' className='w-56 mx-auto'/>
+                  <p className='text-center font-semibold'>Multi-lingual</p>
+                  <p className='w-56 text-center text-sm'>Supports course content in regional language</p>
                 </div>
           
       </div>
       
-      <div className="h-full md:h-72 bg-gradient-to-br from-[#331DAB] to-[#865AEF] -ml-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 p-8 text-white pl-16">
+      <div className="h-full bg-gradient-to-br from-[#331DAB] to-[#865AEF] -ml-8">
+      <div className="custom-shape-divider-top-1710665462">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-white"></path>
+    </svg>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-white pl-16">
                 <div>
                   <div>
                     <p className="font-bold text-2xl mb-4 mx-auto text-center">Academia</p>
@@ -223,6 +226,7 @@ const Home = () => {
                   <p className="mt-2 text-center">academia@gmail.com</p>
                 </div>
         </div>
+      </div>
       </div>
 
     </div>

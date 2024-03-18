@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar, { SidebarItem } from '../Sidebar'
-import { Frown, LayoutDashboard, Sparkles, Brain } from 'lucide-react';
+import { DollarSignIcon, LayoutDashboard, Sparkles, Brain, DollarSign } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 
@@ -15,7 +15,7 @@ const Layout = ({children}) => {
           <div className='flex'>
           <Sidebar>
               <SidebarItem text="Dashboard"  icon={<LayoutDashboard />} active={path=='/dashboard'} link='/dashboard'/>
-              <SidebarItem text="Price Estimator"  icon={<Frown />} active={path=='/price-estimator'} link='/price-estimator' />
+              <SidebarItem text="Price Estimator"  icon={<DollarSignIcon />} active={path=='/price-estimator'} link='/price-estimator' />
               <SidebarItem text="Pathway"  icon={<Sparkles />} active={path=='/pathway'} link='/pathway' />
               <SidebarItem text="AI Tutor"  icon={<Brain />} active={path=='/ai-tutor'} link='/ai-tutor' />
           </Sidebar>

@@ -1,5 +1,5 @@
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react"
-import { useContext, createContext, useState } from "react"
+import { useContext, createContext, useState, useEffect } from "react"
 import Logout from './Logout';
 
 const SidebarContext = createContext()
@@ -8,10 +8,17 @@ export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true)
   const [logout, setLogout] = useState(false);
 
+  useEffect(()=>{
+    if(window.innerWidth<640)
+      setExpanded(false);
+    else 
+      setExpanded(true);  
+  },[window.innerWidth])
+
   return (
     <aside className="h-screen fixed">
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center">
+        <div className="md:p-4 pb-2 flex justify-between items-center">
           {/* <img
             src="/logo.png" alt='logo'
             className={`overflow-hidden transition-all ${
@@ -49,7 +56,7 @@ export default function Sidebar({ children }) {
           >
             <div className="leading-4">
               <h4 className="font-semibold">User1</h4>
-              <span className="text-xs text-gray-600">user1@gmail.com</span>
+              <span className="text-xs text-gray-600">user11@gmail.com</span>
             </div>
             <div className={`${!logout ? 'hidden' : 'block'} relative left-20 bottom-8`}>
               <Logout />

@@ -3,10 +3,11 @@ import whisper
 from transformers import pipeline
 import os
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from typing_extensions import Concatenate
 from langchain.chains.question_answering import load_qa_chain
+from flask import Flask
 
 from langchain_openai import OpenAI
 
