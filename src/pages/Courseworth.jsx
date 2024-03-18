@@ -9,27 +9,46 @@ const Courseworth = () => {
   const handleEnter = ()=>{
     setShowq(true);
   }
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [showDetail, setShowdetail] = useState(false);
+
+
+  const handleVideoSelect = (videoUrl) => {
+    setSelectedVideo(videoUrl);
+    console.log(videoUrl)
+    if(videoUrl=='video1')
+    {
+      setShowdetail(true);
+    }
+  };
   return (
     <Layout>
       <div className="">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full pr-8 mt-8">
-          <div className="bg-blue-100 px-4 py-3 flex justify-between items-center">
-            <p className="font-bold text-gray-800">Know the Course worth</p>
-            
+        <div className="bg-blue-100 px-4 py-3 flex justify-between items-center mt-2 mr-4 rounded-lg">
+            <p className="font-bold text-gray-800">Know the Course worth</p>  
           </div>
-          <div className="p-4 space-y-2">
-            
-          </div>
-          <div className="px-4 py-3 flex items-center justify-between">
-            <input type="text" placeholder="Enter the course link..." className="flex-1 bg-white rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-blue-300" onChange={(e)=>setLink(e.target.value)}/>
-            <button className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600" onClick={handleEnter}>Enter</button>
-          </div>
-          <div className={`${showq? 'px-4 py-3 flex flex-col items-center justify-between' : 'hidden'}`}>
-            <input type="text" placeholder="Type your question..." className="flex-1 bg-white rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-blue-300 w-full"/>
-            <button className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600 mt-2" onClick={handleEnter}>Submit</button>
-          </div>
+          <div className='grid grid-cols-3 gap-4 mx-4 mt-8'>
+      <div className={` cursor-pointer ${selectedVideo === 'video1' ? 'hover:shadow-lg shadow-md shadow-blue-500 opacity-70' : ''}`} onClick={() => handleVideoSelect('video1')}>
+        <img src='https://i.ytimg.com/an_webp/erUfLIi9OFM/mqdefault_6s.webp?du=3000&sqp=CNCM4q8G&rs=AOn4CLBHJwAEZebRxP_W3KDYUNOEhB5rDw' alt="Video 1" />
+      </div>
+      <div className={`cursor-pointer ${selectedVideo === 'video2' ? 'hover:shadow-lg shadow-md shadow-blue-500 opacity-70' : ''}`} onClick={() => handleVideoSelect('video2')}>
+        <img src='https://i.ytimg.com/an_webp/ag3DLKsl2vk/mqdefault_6s.webp?du=3000&sqp=COf04a8G&rs=AOn4CLAWM7INyCtBV05bT2eL9f5Q4YwZPA' alt="Video 2" />
+      </div>
+      <div className={` cursor-pointer ${selectedVideo === 'video3' ? 'hover:shadow-lg shadow-md shadow-blue-500 opacity-70' : ''}`} onClick={() => handleVideoSelect('video3')}>
+        <img src='https://i.ytimg.com/an_webp/mTVf7BN7S8w/mqdefault_6s.webp?du=3000&sqp=CMDX4a8G&rs=AOn4CLAv41tm4HUADH8jZ6tqRg21O5XK6Q' alt="Video 3" />
+      </div>
+    </div>
+    {showDetail && (
+      <div className='mt-4 ml-2'>
+        <span className='font-semibold'>Course name: </span><span>LLM LangChain project using VectorDB</span><br />
+        <span className='font-semibold'>Author name: </span><span>Krish Naik</span><br />
+        <span className='font-semibold'>Description: </span><span>In this video we will be creeating an end to end LLM Project with vector.Pinecone makes it easy to provide long-term memory for high-performance AI applications. It’s a managed, cloud-native vector database with a simple API and no infrastructure hassles. Pinecone serves fresh, filtered query results with low latency at the scale of billions of vectors. database</span>
+      </div>
+    )
+    
+    }
 
-        </div>
+
       </div>
     </Layout>
   );

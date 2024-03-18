@@ -9,107 +9,111 @@ const Home = () => {
   console.log(user)
   
   return (
-    <div className="bg-gradient-to-b from-[#04016C] to-blue-[#4A16BD]">
+    <div className="">
         <MobileSide isOpen={isOpen}/>
-        <div className={`${isOpen ? 'absolute top-4 right-4 text-white z-40':'hidden'}`} onClick={()=>setIsOpen(false)}>X</div>
-      <header className="">
-        <div className="px-4 mx-auto sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            <div className="flex-shrink-0">
-              <a href="#" title="" className="flex">
-                <h2 className="text-3xl font-extrabold tracking-widest font-sans-serif text-white">
-                  Academia
-                </h2>
-              </a>
-            </div>
-            <button
-              type="button"
-              className="inline-flex p-1 text-white transition-all duration-200 border border-white lg:hidden focus:bg-gray-100 hover:bg-gray-100"
-              onClick={()=>setIsOpen(!isOpen)}
-            >
-              <svg
-                className="block w-6 h-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              <svg
-                className="hidden w-6 h-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              </svg>
-            </button>
-            <div className="hidden ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
-              <a
-                href="#"
-                title=""
-                className="text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80"
-              >
-                Home
-              </a>
-              <a
-                href="/dashboard"
-                title=""
-                className="text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80"
-              >
-                Dashboard
-              </a>
-              <a
-                href="#"
-                title=""
-                className="text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80"
-              >
-                About
-              </a>
-              <a
-                href="#"
-                title=""
-                className="text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80"
-              >
-                Team
-              </a>
-              <div className={`${user ? 'hidden' : 'w-px h-5 bg-black/20'}`}></div>
-              <a
-                href="/login"
-                title=""
-                className={`${user ? 'hidden' : 'text-base font-semibold text-white transition-all duration-200 hover:text-opacity-80'}`}
-              >
-                Login
-              </a>
-              <a
-                href="#"
-                title=""
-                className={`${ user ? 'hidden' : 'inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-white border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white'}`}
-                role="button"
-              >
-                Register
-              </a>
-            </div>
-          </div>
+      <div className={`${isOpen ? 'absolute top-4 right-4 text-white z-40':'hidden'}`} onClick={()=>setIsOpen(false)}>X</div>
+      <div className='flex flex-col items-center'>
+  <header className="mx-auto bg-white rounded-lg fixed mt-4">
+    <div className="px-4 mx-auto sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex-shrink-0 mr-72 px-4">
+          <a href="#" title="" className="flex">
+            <h2 className="text-3xl font-extrabold tracking-widest font-sans-serif ">
+              Academia
+            </h2>
+          </a>
         </div>
-      </header>
-      <section className="py-10 sm:py-16 lg:py-24">
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <button
+          type="button"
+          className="inline-flex p-1 text-white transition-all duration-200 border border-white lg:hidden focus:bg-gray-100 hover:bg-gray-100"
+          onClick={()=>setIsOpen(!isOpen)}
+        >
+          <svg
+            className="block w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <svg
+            className="hidden w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <div className="hidden ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
+          <a
+            href="#"
+            title=""
+            className="text-base font-semibold  transition-all duration-200 hover:text-opacity-80"
+          >
+            Home
+          </a>
+          <a
+            href="/dashboard"
+            title=""
+            className="text-base font-semibold transition-all duration-200 hover:text-opacity-80"
+          >
+            Dashboard
+          </a>
+          <a
+            href="#"
+            title=""
+            className="text-base font-semibold transition-all duration-200 hover:text-opacity-80"
+          >
+            About
+          </a>
+          <a
+            href="#"
+            title=""
+            className="text-base font-semibold transition-all duration-200 hover:text-opacity-80"
+          >
+            Team
+          </a>
+          <div className={`${user ? 'hidden' : 'w-px h-5 bg-black/20'}`}></div>
+          <a
+            href="/login"
+            title=""
+            className={`${user ? 'hidden' : 'text-base font-semibold transition-all duration-200 hover:text-opacity-80'}`}
+          >
+            Login
+          </a>
+          <a
+            href="#"
+            title=""
+            className={`${ user ? 'hidden' : 'inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white'}`}
+            role="button"
+          >
+            Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+
+      <section className="py-10 sm:py-16 lg:py-24 bg-blue-50">
+        <div className="px-4 max-w-7xl sm:px-6 lg:px-8 mx-12">
           <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
             <div>
-              <motion.h1 variants={fadeIn('up', 0.25)} initial="hidden" whileInView={'show'} viewport={{once:false, amount:0.7}} className="text-4xl font-semibold text-white sm:text-6xl lg:text-5xl">
+              <motion.h1 variants={fadeIn('up', 0.25)} initial="hidden" whileInView={'show'} viewport={{once:false, amount:0.7}} className="text-4xl font-semibold sm:text-6xl lg:text-5xl">
               Empowering Education, Anytime, Anywhere
                 <div className="relative inline-flex">
                   <span className="absolute inset-x-0 bottom-0"></span>
@@ -136,10 +140,10 @@ const Home = () => {
                 
               </div>
             </div>
-            <div className="flex justify-center md:justify-end">
+            <div className="flex justify-center md:justify-end mt-12">
               <img
-                className="w-[70%]"
-                src="https://freepngimg.com/thumb/girl/168680-woman-young-free-clipart-hd.png"
+                className="w-[80%]"
+                src="/learn.png"
                 alt=""
               />
             </div>

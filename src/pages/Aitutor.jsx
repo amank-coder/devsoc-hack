@@ -68,12 +68,33 @@ const Aitutor = () => {
       </select>
       </div>
       
-        <div className='mx-auto hidden md:block'>
-          <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls />
+        <div className='flex'>
+          <div className='mx-auto hidden md:block'>
+            <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls />
+          </div>
+          <div className='mx-auto md:hidden'>
+            <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls width="300px" height="200px"/>
+          </div>
+          <div className=' flex flex-col gap-2 mx-2'>
+          <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md'>
+            <span>1</span>
+            <img src='https://i.ytimg.com/vi/dGtDTjYs3xc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC-vDfPWgAJkSrXmKR3SflABRJmcQ' className='w-32' />
+          </div>
+          <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md'>
+            <span>2</span>
+            <img src='https://i.ytimg.com/vi/bns5ELvbzVk/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAP4SNcaEqpVGE32bsY5gPWOv4pDg' className='w-32' />
+          </div>
+          <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md'>
+            <span>3</span>
+            <img src='https://i.ytimg.com/vi/ZN6P_GEJ7lk/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLArRDGOCbDydEKeuj-wUgLybP2c-Q' className='w-32' />
+          </div>
+          <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md'>
+            <span>4</span>
+            <img src='https://i.ytimg.com/vi/t6NI0u_lgNo/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCxjxa_V0S6GlcZWXOVQtNQpNc2Qg' className='w-32' />
+          </div>
+          </div>
         </div>
-        <div className='mx-auto md:hidden'>
-          <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls width="300px" height="200px"/>
-        </div>
+        
         
         <div className='md:mx-24 mt-8'>
           <h2 className='text-2xl mb-2'>Any Doubts?</h2>
