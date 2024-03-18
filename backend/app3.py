@@ -39,7 +39,7 @@ embeddings= HuggingFaceEmbeddings()
 vectorStore_openAI = FAISS.from_texts(texts, embeddings)
 
 
-os.environ["OPENAI_API_KEY"]="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"
+os.environ["OPENAI_API_KEY"]=""
 
 chain=load_qa_chain(OpenAI(),chain_type="stuff")
 
