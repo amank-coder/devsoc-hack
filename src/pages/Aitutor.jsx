@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout';
 import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Mic } from 'lucide-react';
 
 
 const Aitutor = () => {
@@ -15,8 +16,17 @@ const Aitutor = () => {
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const [isRecording, setisRecording] = useState(false);
+const [note, setNote] = useState(null);
+const [notesStore, setnotesStore] = useState([]);
 
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const microphone = new SpeechRecognition();
 
+microphone.continuous = true;
+microphone.interimResults = true;
+microphone.lang = "en-US";
 
   const handleSeekChange = (e) => {
     setSeekToTime(parseFloat(e.target.value));
@@ -56,6 +66,14 @@ const Aitutor = () => {
       // Handle the error, such as displaying an error message to the user
     }
   };
+
+  const startRecordController = () => {
+  };
+
+const storeNote = () => {
+  setnotesStore([...notesStore, note]);
+  setNote("");
+};
   
 
   return (
@@ -96,25 +114,42 @@ const Aitutor = () => {
         </div>
         
         
-        <div className='md:mx-24 mt-8'>
-          <h2 className='text-2xl mb-2'>Any Doubts?</h2>
-          <div className='mb-4'>
-          <input
-            type="text"
-            placeholder="Ask your doubt ..."
-            className="w-full px-3 py-2 border rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
-            value={doubt}  // Add this line to set the value of the input field
-            onChange={(e) => setDoubt(e.target.value)}
-          />
+        <div className='md:mx-16 mt-8'>
+  <h2 className='text-2xl mb-2'>Any Doubts?</h2>
+  <div className='mb-4 flex items-center w-[700px]'>
+    <input
+      type="text"
+      placeholder="Ask your doubt ..."
+      className="flex-1 px-3 py-2 border rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
+      value={doubt}
+      onChange={(e) => setDoubt(e.target.value)}
+    />
+    <label className='ml-2 text-blue-500 cursor-pointer'><Mic /></label>
+  </div>
+  <button className='p-2 bg-blue-400 px-4 mt-2 text-white' onClick={handleSubmit}>Submit</button>
 
-            <button className='p-2 bg-blue-400 px-4 mt-2 text-white' onClick={handleSubmit}>Submit</button>
-            {loading && <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><circle cx="18" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".67" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="12" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".33" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="6" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin="0" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle></svg>}
-            <p className="font-bold mt-4">Answer</p>
-            {answer && 
-            <p>{answer}</p>
-            }
-          </div>
-        </div>
+  {/* <div className="noteContainer">
+        <h2>Record Note Here</h2>
+        {isRecording ? <span>Recording... </span> : <span>Stopped </span>}
+        <button className="button" onClick={storeNote} disabled={!note}>
+          Save
+        </button>
+        <button onClick={() => setisRecording((prevState) => !prevState)}>
+          Start/Stop
+        </button>
+        <p>{note}</p>
+      </div>
+      <div className="noteContainer">
+        <h2>Notes Store</h2>
+      </div> */}
+  
+  {loading && <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><circle cx="18" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".67" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="12" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".33" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="6" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin="0" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle></svg>}
+  <p className="font-bold mt-4">Answer</p>
+  {answer && 
+  <p>{answer}</p>
+  }
+</div>
+
       </div>
       {/* <div className='mx-24 mt-8'>
           <h2 className='text-2xl'>Seek to a Specific Time</h2>

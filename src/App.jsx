@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import AitutorHindi from './pages/AitutorHindi';
 import Pathway from './pages/Pathway';
 import Courseworth from './pages/Courseworth';
+import Courseguide from './pages/Courseguide';
 
 function App() {
   
@@ -20,6 +21,8 @@ function App() {
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/pathway' element={<Pathway />} />
         <Route exact path='/course-worth' element={<Courseworth />} />
+        <Route exact path='/course-guider' element={<Courseguide />} />
+
       </Routes>
     </>
   )

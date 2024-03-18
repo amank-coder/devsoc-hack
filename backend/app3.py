@@ -27,7 +27,7 @@ All pre-processing steps were encapsulated into TensorFlow layers, ensuring seam
 
 The project emphasized the importance of efficient data handling through TensorFlow's dataset API, ensuring scalability and performance during model training. Furthermore, the pre-processing steps laid the groundwork for building a robust classification model capable of accurately identifying tomato plant diseases."""
 
-# Initialize the question answering pipeline with a pre-trained model
+
 
 text_splitter=CharacterTextSplitter(
     separator="\n",
@@ -39,35 +39,48 @@ embeddings= HuggingFaceEmbeddings()
 vectorStore_openAI = FAISS.from_texts(texts, embeddings)
 
 
-os.environ["OPENAI_API_KEY"]="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"
+os.environ["OPENAI_API_KEY"]="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"
 
 chain=load_qa_chain(OpenAI(),chain_type="stuff")
 
-'''query="how to do data preprocessing"
-docs=vectorStore_openAI.similarity_search(query)
-answer=chain.run(input_documents=docs, question=query)
-answer'''
-
-
-# This function processes the user's doubt/query and generates a response
 def process_doubt(user_doubt):
-    # Use the question answering pipeline to find the answer in the transcript
     docs=vectorStore_openAI.similarity_search(user_doubt)
     answer=chain.run(input_documents=docs, question=user_doubt)
     return answer
 
-# This route handles incoming doubt/query and responds based on the transcript
+def worthness(user_query):
+    docs=vectorStore_openAI.similarity_search(user_query)
+    answer=chain.run(input_documents=docs, question=user_query)
+    return answer
+
 @app.route('/answer_doubt', methods=['POST'])
 def answer_doubt():
-    # Get the doubt/query from the request
     user_doubt = request.json.get('doubt')
-
-    # Process the user's doubt/query
     response = process_doubt(user_doubt)
 
     return jsonify({"answer": response})
 
+@app.route('/discription', methods=['GET'])
+def discription():
+    user_query1 = "provide tech stack discussed"
+    user_query2 = "what are the topic covered"
+    user_query3 = "is project discussed yes or no"
+    response1 = worthness(user_query1)
+    response2 = worthness(user_query2)
+    response3 = worthness(user_query3)
 
+    return jsonify({
+        "response1": response1,
+        "response2": response2,
+        "response3": response3
+    })
+
+@app.route('/worth', methods=['POST'])
+def worth():
+    user_query = request.json.get('query')
+    response = worthness(user_query)
+
+    return jsonify({"answer": response})
 
 if __name__ == '__main__':
     app.run(debug=True)
