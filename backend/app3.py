@@ -10,6 +10,10 @@ from typing_extensions import Concatenate
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 
+# import speech_recognition as spr
+# from googletrans import Translator
+
+
 app = Flask(__name__)
 # CORS(app, support_credentials=True)
 CORS(app)
@@ -41,7 +45,7 @@ vectorStore_openAI1 = FAISS.from_texts(texts1, embeddings)
 vectorStore_openAI2 = FAISS.from_texts(texts2, embeddings)
 
 
-os.environ["OPENAI_API_KEY"]="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"
+os.environ["OPENAI_API_KEY"]="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"
 
 chain=load_qa_chain(OpenAI(),chain_type="stuff")
 
@@ -82,6 +86,8 @@ def worth():
     response = worthness(user_query)
 
     return jsonify({"answer": response})
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

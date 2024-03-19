@@ -29,7 +29,7 @@ const Home = () => {
         <MobileSide isOpen={isOpen}/>
       <div className={`${isOpen ? 'absolute top-4 right-4 text-white z-40':'hidden'}`} onClick={()=>setIsOpen(false)}>X</div>
       <div className='flex flex-col items-center'>
-  <header className="mx-auto bg-white rounded-lg fixed mt-4 shadow-md hidden md:block">
+  <header className="mx-auto bg-white rounded-lg fixed mt-4 shadow-md hidden md:block z-40">
     <div className="px-4 mx-auto sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-16 lg:h-20">
         <div className="flex-shrink-0 mr-72 px-4">
@@ -194,40 +194,28 @@ const Home = () => {
                 </div>
                 
       </div>
-      <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">Our Services </div>
+      <div className="bg-white px-16 pt-24 font-semibold text-3xl text-center ">Our Services </div>
       <div className="flex flex-col md:flex-row gap-2 bg-white justify-between md:px-24 pt-8 pb-12">
 
       <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/planned.jpg' alt='service-1' className='w-72 mx-auto'/>
-                  <p className='text-center font-semibold'>Planned Learning Path</p>
-                  <p className='w-56 text-center text-sm'>AI curated personalized course</p>
-                </div>
-                <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
                   <img src='/worth.jpg' alt='service-1' className='w-72 mx-auto'/>
                   <p className='text-center font-semibold'>Course Worthiness</p>
-                  <p className='w-56 text-center text-sm'>Know the worth of the course</p>
+                  <p className='w-56 text-center text-sm ml-8'>Know the worth of the course</p>
                 </div>
                 <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-                  <img src='/s3.jpg' alt='service-1' className='w-72 mx-auto'/>
-                  <p className='text-center font-semibold'>Course Navigation</p>
-                  <p className='w-56 text-center text-sm'>AI curated personalized course</p>
-                </div>
+    <img src='/s1.jpg' alt='service-1' className='w-72 mx-auto'/>
+    <p className='text-center font-semibold'>AI Tutor & Course Navigation</p>
+    <p className='text-center w-56 text-sm ml-8'>AI-assisted smart doubt resolution</p>
+  </div>
+  <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
+    <img src='/multi.jpg' alt='service-1' className='w-72 mx-auto'/>
+    <p className='text-center font-semibold'>Multi-lingual</p>
+    <p className='w-56 text-center text-sm ml-8'>Supports course content in regional language</p>
+  </div>
 
           
       </div>
-      <div className="flex flex-col md:flex-row justify-center gap-16">
-  <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-    <img src='/s1.jpg' alt='service-1' className='w-72 mx-auto'/>
-    <p className='text-center font-semibold'>AI Tutor</p>
-    <p className='text-center w-56 text-sm'>AI-assisted smart doubt resolution</p>
-  </div>
-  
-  <div className="shadow-lg hover:scale-105 hover:shadow-blue-500 cursor-pointer rounded-md border-black p-2">
-    <img src='/s1.jpg' alt='service-1' className='w-72 mx-auto'/>
-    <p className='text-center font-semibold'>Multi-lingual</p>
-    <p className='w-56 text-center text-sm'>Supports course content in regional language</p>
-  </div>
-</div>
+      
 
 
       {/* <div className="bg-white px-16 pt-24 font-semibold text-2xl text-center ">How it works ? </div> */}
@@ -271,7 +259,7 @@ const Home = () => {
                 </div>
                 <div className="md:pl-8">
                   {/* <h1 className="font-bold text-center">Quick Links</h1> */}
-                  <div className="grid grid-cols-3 mt-4 gap-4 text-left">
+                  <div className="grid grid-cols-2 mt-4 gap-16 text-left">
            
                     {/* <div>Home</div>
                     <div>About us</div>

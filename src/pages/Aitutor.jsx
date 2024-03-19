@@ -1,12 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Layout from '../components/layout/Layout';
 import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Mic } from 'lucide-react';
+import { useContext } from 'react';
+import { Context } from '../components/utils/context';
 
 
 const Aitutor = () => {
+
+  const { lang, setLang } = useContext(Context);
+  const lang1 = localStorage.getItem('lang')
+  console.log("lang",lang)
   
   const navigate = useNavigate();
   const playerRef = useRef(null);
@@ -15,6 +21,7 @@ const Aitutor = () => {
   const [doubt, setDoubt] = useState('');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
+  const [v,setV] = useState('one');
 
   const [isRecording, setisRecording] = useState(false);
 const [note, setNote] = useState(null);
@@ -39,13 +46,19 @@ microphone.lang = "en-US";
     }
   }
 
-  const handleChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedLanguage(selectedValue);
-    if (selectedValue === 'Hindi') {
-      navigate('/ai-tutor/hindi'); // Assuming you have navigate function available
-    }
-  };
+  let showv= false;
+  // const handleChange = (event) => {
+  //   const selectedValue = event.target.value;
+  //   setSelectedLanguage(selectedValue);
+  //   setLang(selectedLanguage);
+
+  //   if (lang === 'Hindi' && playerRef.current) {
+  //     playerRef.current.seekTo(0);
+  //     showv=true;
+  //   }
+    
+
+  // };
 
   const handleSubmit = async () => {
     try {
@@ -66,35 +79,60 @@ microphone.lang = "en-US";
       // Handle the error, such as displaying an error message to the user
     }
   };
-
-  const startRecordController = () => {
-  };
-
-const storeNote = () => {
-  setnotesStore([...notesStore, note]);
-  setNote("");
+  const handleVideoPlay = () => {
+    if (lang1 === 'Hindi' && playerRef.current) {
+        // Start playing the audio
+        const audio = document.getElementById('hindiAudio');
+        audio.play();
+    }
 };
-  
+
+const handleVideoPause = () => {
+    if (lang1 === 'Hindi') {
+        // Pause the audio
+        const audio = document.getElementById('hindiAudio');
+        audio.pause();
+    }
+};
+
+
+ 
 
   return (
     <Layout>
       <div className='mt-8 flex flex-col'>
       <div className='text-end mr-16 mb-8'>
-      <select className='w-32 px-3 py-2 border rounded-lg bg-gray-100 focus:border-blue-500 focus:outline-none' onChange={handleChange}>
+      {/* <select className='w-32 px-3 py-2 border rounded-lg bg-gray-100 focus:border-blue-500 focus:outline-none' onChange={handleChange}>
         <option>English</option>
         <option >Hindi</option>
-      </select>
+      </select> */}
       </div>
       
         <div className='flex'>
-          <div className='mx-auto hidden md:block'>
-            <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls />
-          </div>
+          
+          
           <div className='mx-auto md:hidden'>
             <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls width="300px" height="200px"/>
           </div>
+          {v=='one' ? (<div className='mx-auto hidden md:block'>
+            <ReactPlayer ref={playerRef} url='https://www.youtube.com/watch?v=bns5ELvbzVk' controls />
+          </div>):(
+          <div className={`mx-auto `}>
+            <ReactPlayer ref={playerRef} url='https://youtu.be/jlHkDBEumP0?si=XlsNLNoyEKIBYPMu' controls muted={lang1=='Hindi'} onPlay={handleVideoPlay}
+                onPause={handleVideoPause}/>
+            {lang1 === 'Hindi' && (
+    <audio id="hindiAudio">
+        <source src="/hindi.mp3" type="audio/mp3" />
+    </audio>
+)}
+          </div>)}
+          <div>
+          
+            {/* Your other content */}
+        </div>
+      
           <div className=' flex flex-col gap-2 mx-2'>
-          <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md'>
+          <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md' onClick={()=>setV('one')}>
             <span>1</span>
             <img src='https://i.ytimg.com/vi/dGtDTjYs3xc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC-vDfPWgAJkSrXmKR3SflABRJmcQ' className='w-32' />
           </div>
@@ -109,6 +147,10 @@ const storeNote = () => {
           <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md'>
             <span>4</span>
             <img src='https://i.ytimg.com/vi/t6NI0u_lgNo/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCxjxa_V0S6GlcZWXOVQtNQpNc2Qg' className='w-32' />
+          </div>
+          <div className='flex items-center gap-2 cursor-pointer hover:bg-gray-200 px-2 rounded-md' onClick={()=>setV('five')}>
+            <span>5</span>
+            <img src='https://i.ytimg.com/an_webp/jlHkDBEumP0/mqdefault_6s.webp?du=3000&sqp=CPXW5K8G&rs=AOn4CLBhL6eKMn7izXNgyktoHWCIfLVUTw' className='w-32' />
           </div>
           </div>
         </div>
@@ -146,7 +188,7 @@ const storeNote = () => {
   {loading && <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><circle cx="18" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".67" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="12" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".33" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle><circle cx="6" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin="0" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"/></circle></svg>}
   <p className="font-bold mt-4">Answer</p>
   {answer && 
-  <p>{answer}</p>
+  <p className='pb-6'>{answer}</p>
   }
 </div>
 

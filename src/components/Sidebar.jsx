@@ -55,8 +55,8 @@ export default function Sidebar({ children }) {
           `}
           >
             <div className="leading-4">
-              <h4 className="font-semibold">User1</h4>
-              <span className="text-xs text-gray-600">user11@gmail.com</span>
+              <h4 className="font-semibold">Aman Konchgamey</h4>
+              <span className="text-xs text-gray-600">aman@gmail.com</span>
             </div>
             <div className={`${!logout ? 'hidden' : 'block'} relative left-20 bottom-8`}>
               <Logout />
